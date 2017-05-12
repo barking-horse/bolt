@@ -2,6 +2,7 @@
 
 namespace Bolt\Nut;
 
+use Bolt\Storage\Database\Schema\SchemaCheck;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -35,6 +36,7 @@ class DatabaseRepair extends BaseCommand
             return 0;
         }
 
+        /** @var SchemaCheck $response */
         $response = $this->app['schema']->check();
         if (!$response->hasResponses()) {
             $this->io->success('Your database is already up to date.');

@@ -259,6 +259,7 @@ class Application extends Silex\Application
             ->register(new Provider\PagerServiceProvider())
             ->register(new Provider\CanonicalServiceProvider())
             ->register(new Provider\EmbedServiceProvider())
+            ->register(new Provider\DatabaseTypeMigrationServiceProvider())
         ;
 
         // Initialize our friendly configuration notice helpers, if available.

@@ -1,0 +1,53 @@
+{##
+ # Sidebar-Panel: Displays actions for DB check & upgrades
+ #}
+{% extends '@bolt/_base/_panel.twig' %}
+
+{% block panel_class 'panel-news' %}
+
+{% block panel_icon 'fa-cog' %}
+
+{% block panel_head __('page.dbcheck.actions') %}
+
+{% block panel_body %}
+    {% if context.debug %}
+        <button type="submit" id="action_check_hide_changes" class="btn btn-tertiary btn-block">
+            <i class="fa fa-fw fa-toggle-off"> </i>
+            {{ __('general.phrase.hide-proposed-alterations') }}
+        </button>
+    {% else %}
+        <button type="submit" id="action_check_show_changes" class="btn btn-tertiary btn-block">
+            <i class="fa fa-fw fa-search"> </i>
+            {{ __('general.phrase.show-proposed-alterations') }}
+        </button>
+    {% endif %}
+
+    <button type="submit" id="action_check_upgrade" class="btn btn-secondary btn-block">
+        <i class="fa fa-fw fa-object-ungroup"> </i>
+        {{ __('general.phrase.upgrade-database') }}
+    </button>
+
+    <script>
+        document = window.document;
+        document.addEventListener('DOMContentLoaded', function(e) {
+            var button_hide = document.getElementById('action_check_hide_changes');
+            if (button_hide !== null) {
+                button_hide.addEventListener('click', function (e){
+                    e.view.document.getElementById('database_check_hide_changes').click();
+                });
+            }
+            var button_show = document.getElementById('action_check_show_changes');
+            if (button_show !== null) {
+                button_show.addEventListener('click', function(e) {
+                    e.view.document.getElementById('database_check_show_changes').click();
+                });
+            }
+            var button_upgrade = document.getElementById('action_check_upgrade');
+            if (button_upgrade !== null) {
+                button_upgrade.addEventListener('click', function(e) {
+                    e.view.document.getElementById('database_check_upgrade').click();
+                });
+            }
+        });
+    </script>
+{% endblock panel_body %}

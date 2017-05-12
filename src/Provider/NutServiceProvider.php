@@ -50,6 +50,7 @@ class NutServiceProvider implements ServiceProviderInterface
                     new Nut\DatabaseOptimize(),
                     new Nut\DatabasePrefill(),
                     new Nut\DatabaseRepair(),
+                    new Nut\DatabaseTypeMigration(),
                     new Nut\Extensions(),
                     new Nut\ExtensionsDumpAutoload(),
                     new Nut\ExtensionsInstall(),
